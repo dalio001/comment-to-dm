@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Campaigns · Comment-to-DM{% endblock %}
+{% block content %}
+<header class="page-head">
+  <h1>Campaigns</h1>
+  <button id="new-campaign" class="btn-primary">+ New campaign</button>
+</header>
+
+<div id="campaign-list" class="grid"></div>
+
+<!-- Add / edit modal -->
+<div id="modal" class="modal hidden">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h2 id="modal-title">New campaign</h2>
+      <button id="modal-close" class="icon-btn">&times;</button>
+    </div>
+    <form id="campaign-form">
+      <input type="hidden" name="id" />
+      <div class="row">
+        <label>Platform
+          <select name="platform">
+            <option value="instagram">Instagram</option>
+            <option value="facebook">Facebook</option>
+          </select>
+        </label>
+        <label>Name (optional)
+          <input type="text" name="name" placeholder="Summer promo" />
+        </label>
+      </div>
+
+      <label>Post ID
+        <input type="text" name="post_id" placeholder="IG media ID or FB post ID" required />
+      </label>
+
+      <div id="preview" class="preview hidden">
+        <img id="preview-img" alt="post thumbnail" />
+        <p id="preview-caption" class="muted"></p>
+      </div>
+
+      <label>Trigger keywords <small class="muted">(comma-separated, case-insensitive, partial match)</small>
+        <input type="text" name="keywords" placeholder="link, info, want, send me" />
+      </label>
+
+      <label>Public comment reply
+        <textarea name="comment_reply" rows="2" placeholder="Sent you a DM! 📩"></textarea>
+      </label>
+
+      <label>Private DM message
+        <textarea name="dm_message" rows="3" placeholder="Here's the link you asked for: ..."></textarea>
+      </label>
+
+      <label class="checkbox">
+        <input type="checkbox" name="active" checked /> Active
+      </label>
+
+      <div class="modal-actions">
+        <button type="button" id="modal-cancel" class="btn-ghost">Cancel</button>
+        <button type="submit" class="btn-primary">Save campaign</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}<script src="/static/campaigns.js"></script>{% endblock %}

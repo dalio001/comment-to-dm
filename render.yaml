@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: comment-to-dm
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: WEBHOOK_VERIFY_TOKEN
+        sync: false
+      - key: FACEBOOK_APP_SECRET
+        sync: false
+      - key: DATABASE_URL
+        value: sqlite:///./app.db
+      - key: LOG_LEVEL
+        value: INFO

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Comment-to-DM{% endblock %}</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="brand">💬 Comment&rarr;DM</div>
+    <a href="/dashboard" class="{{ 'nav-active' if active == 'campaigns' else '' }}">Campaigns</a>
+    <a href="/settings" class="{{ 'nav-active' if active == 'settings' else '' }}">Settings</a>
+    <div class="nav-foot">IG + FB · ManyChat-style</div>
+  </nav>
+  <main class="content">
+    <div id="toast" class="toast"></div>
+    {% block content %}{% endblock %}
+  </main>
+  <script src="/static/app.js"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

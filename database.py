@@ -36,7 +36,21 @@ def init_db():
     import models  # noqa: F401  (register models on Base before create_all)
 
     Base.metadata.create_all(bind=engine)
+    _migrate_add_columns()
     _seed_config_from_env()
+
+
+def _migrate_add_columns():
+    """Lightweight auto-migration: add columns introduced after a table already
+    exists. create_all() never alters existing tables, so new columns on old
+    deployments would be missing without this."""
+    from sqlalchemy import inspect, text
+
+    inspector = inspect(engine)
+    existing = {c["name"] for c in inspector.get_columns("campaigns")}
+    if "followup_message" not in existing:
+        with engine.begin() as conn:
+            conn.execute(text("ALTER TABLE campaigns ADD COLUMN followup_message TEXT DEFAULT ''"))
 
 
 def _seed_config_from_env():

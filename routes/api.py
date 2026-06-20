@@ -78,6 +78,7 @@ class CampaignIn(BaseModel):
     keywords: str = ""
     comment_reply: str = ""
     dm_message: str = ""
+    followup_message: str = ""
     active: bool = True
 
 
@@ -104,6 +105,7 @@ def create_campaign(data: CampaignIn, db: Session = Depends(get_db)):
         keywords=data.keywords.strip(),
         comment_reply=data.comment_reply,
         dm_message=data.dm_message,
+        followup_message=data.followup_message,
         active=data.active,
     )
     db.add(campaign)
@@ -124,6 +126,7 @@ def update_campaign(campaign_id: int, data: CampaignIn, db: Session = Depends(ge
     campaign.keywords = data.keywords.strip()
     campaign.comment_reply = data.comment_reply
     campaign.dm_message = data.dm_message
+    campaign.followup_message = data.followup_message
     campaign.active = data.active
     db.commit()
     db.refresh(campaign)

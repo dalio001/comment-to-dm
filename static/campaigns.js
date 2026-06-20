@@ -14,6 +14,7 @@ function openModal(campaign) {
     form.keywords.value = campaign.keywords || "";
     form.comment_reply.value = campaign.comment_reply || "";
     form.dm_message.value = campaign.dm_message || "";
+    form.followup_message.value = campaign.followup_message || "";
     form.active.checked = !!campaign.active;
   } else {
     form.id.value = "";
@@ -53,6 +54,7 @@ form.addEventListener("submit", async (e) => {
     keywords: form.keywords.value,
     comment_reply: form.comment_reply.value,
     dm_message: form.dm_message.value,
+    followup_message: form.followup_message.value,
     active: form.active.checked,
   };
   const id = form.id.value;
@@ -88,6 +90,7 @@ function card(c) {
     <div class="field"><span class="lbl">Keywords</span><div class="kw">${keywordTags(c.keywords) || '<span class="muted">none</span>'}</div></div>
     <div class="field"><span class="lbl">Reply</span>${esc(c.comment_reply) || '<span class="muted">—</span>'}</div>
     <div class="field"><span class="lbl">DM</span>${esc(c.dm_message) || '<span class="muted">—</span>'}</div>
+    <div class="field"><span class="lbl">Follow-up</span>${esc(c.followup_message) || '<span class="muted">—</span>'}</div>
     <div class="actions">
       <span class="badge ${c.active ? "on" : "off"}">${c.active ? "Active" : "Inactive"}</span>
       <button class="btn-ghost" data-act="toggle">${c.active ? "Pause" : "Activate"}</button>

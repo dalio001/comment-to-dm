@@ -40,6 +40,26 @@ def send_dm(comment_id, message, access_token):
     )
 
 
+def send_text_dm(recipient_id, message, access_token):
+    """Send a plain Messenger message to a known user (PSID).
+
+    POST /me/messages  { recipient: {id}, message: {text} }
+
+    Used for the follow-up step: once the user has replied, they are an open
+    conversation, so we address them by PSID instead of a comment_id.
+    """
+    return graph_request(
+        "POST",
+        "me/messages",
+        access_token,
+        data={
+            "recipient": json.dumps({"id": recipient_id}),
+            "message": json.dumps({"text": message}),
+            "messaging_type": "RESPONSE",
+        },
+    )
+
+
 def get_post_details(post_id, access_token):
     """Fetch post image + message for dashboard preview.
 

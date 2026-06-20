@@ -3,6 +3,8 @@
 Config       — singleton row holding IG + FB credentials.
 Campaign     — one tracked post + keywords + reply/DM text, per platform.
 ProcessedComment — dedup table so a comment never fires twice.
+PendingFollowup  — a user who got the first DM and owes a reply; when they
+                   answer, we send the campaign's follow-up (the actual link).
 """
 from datetime import datetime
 
@@ -37,6 +39,10 @@ class Campaign(Base):
     keywords = Column(Text, default="")  # comma-separated, matched case-insensitive/partial
     comment_reply = Column(Text, default="")
     dm_message = Column(Text, default="")
+    # Optional second step: if set, dm_message asks the user to reply, and this
+    # follow-up (e.g. the actual link) is sent once they answer. Replying moves
+    # the thread into their main inbox, escaping the Message Requests folder.
+    followup_message = Column(Text, default="")
     active = Column(Boolean, default=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
@@ -49,6 +55,7 @@ class Campaign(Base):
             "keywords": self.keywords,
             "comment_reply": self.comment_reply,
             "dm_message": self.dm_message,
+            "followup_message": self.followup_message,
             "active": self.active,
             "created_at": self.created_at.isoformat() if self.created_at else None,
         }
@@ -60,4 +67,16 @@ class ProcessedComment(Base):
     id = Column(Integer, primary_key=True)
     comment_id = Column(String(128), unique=True, index=True)
     platform = Column(String(16))
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+
+class PendingFollowup(Base):
+    """One open follow-up per (platform, user). Created when the first DM goes
+    out; consumed (deleted) when the user replies and we send the follow-up."""
+    __tablename__ = "pending_followups"
+
+    id = Column(Integer, primary_key=True)
+    platform = Column(String(16), index=True)
+    user_id = Column(String(128), index=True)  # PSID (FB) / IGSID (IG) of the commenter
+    campaign_id = Column(Integer)
     created_at = Column(DateTime, default=datetime.utcnow)

@@ -30,6 +30,18 @@ def send_dm(comment_id, message, ig_business_account_id, access_token):
     return graph_request("POST", f"{ig_business_account_id}/messages", access_token, data=payload)
 
 
+def send_text_dm(recipient_id, message, ig_business_account_id, access_token):
+    """Send a plain DM to a known user (IGSID) — used for the follow-up step.
+
+    POST /{ig-business-account-id}/messages  with recipient={id}
+    """
+    payload = {
+        "recipient": json.dumps({"id": recipient_id}),
+        "message": json.dumps({"text": message}),
+    }
+    return graph_request("POST", f"{ig_business_account_id}/messages", access_token, data=payload)
+
+
 def get_post_details(post_id, access_token):
     """Fetch media thumbnail + caption for dashboard preview.
 

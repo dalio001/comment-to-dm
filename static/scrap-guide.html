@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Waste-Nothing Guide — Pure Living Zone</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root{
+    --ink:#2b2620; --soft:#5b5347; --line:#d8cdb8;
+    --paper:#f5efe2; --paper2:#efe7d5; --accent:#6b4f2a; --gold:#9a7b3f;
+  }
+  html,body{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:Georgia,'Times New Roman',serif; color:var(--ink); background:var(--paper); }
+  .page{ width:210mm; min-height:297mm; padding:24mm 22mm; position:relative; page-break-after:always; background:var(--paper); }
+  .page:last-child{ page-break-after:auto; }
+
+  /* COVER */
+  .cover{ background:linear-gradient(160deg,#efe7d5 0%,#e6dcc4 100%); display:flex; flex-direction:column; justify-content:center; }
+  .brand{ position:absolute; top:20mm; left:22mm; letter-spacing:.32em; font-size:11px; text-transform:uppercase; color:var(--gold); font-family:Arial,Helvetica,sans-serif; }
+  .crest{ font-size:42px; margin-bottom:14mm; color:var(--accent); }
+  .cover h1{ font-size:52px; line-height:1.04; color:var(--ink); margin-bottom:8mm; font-weight:normal; }
+  .cover h1 em{ font-style:italic; color:var(--accent); }
+  .cover .sub{ font-size:17px; color:var(--soft); line-height:1.6; max-width:135mm; font-style:italic; }
+  .rule{ width:46mm; height:2px; background:var(--gold); margin:11mm 0; }
+  .cover .by{ position:absolute; bottom:22mm; left:22mm; font-size:13px; color:var(--soft); letter-spacing:.04em; font-family:Arial,Helvetica,sans-serif; }
+  .cover .by b{ color:var(--accent); }
+
+  /* CONTENT */
+  h2{ font-size:25px; color:var(--accent); font-weight:normal; margin-bottom:3mm; }
+  .kicker{ font-family:Arial,Helvetica,sans-serif; font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); margin-bottom:2mm; }
+  .lead{ font-size:14px; color:var(--soft); font-style:italic; line-height:1.7; margin-bottom:8mm; padding-bottom:6mm; border-bottom:1px solid var(--line); }
+  .item{ margin-bottom:7mm; }
+  .item h3{ font-size:16.5px; color:var(--ink); margin-bottom:1.5mm; }
+  .item h3 span{ color:var(--gold); font-family:Arial,Helvetica,sans-serif; font-size:13px; margin-right:3mm; }
+  .item p{ font-size:13px; color:var(--soft); line-height:1.65; }
+  .item p b{ color:var(--ink); }
+  .intro p{ font-size:14.5px; line-height:1.8; color:var(--ink); margin-bottom:5mm; }
+  .pull{ font-size:18px; font-style:italic; color:var(--accent); line-height:1.5; margin:9mm 0; padding-left:8mm; border-left:3px solid var(--gold); }
+  .foot{ position:absolute; bottom:14mm; left:22mm; right:22mm; display:flex; justify-content:space-between; font-family:Arial,Helvetica,sans-serif; font-size:9.5px; letter-spacing:.06em; color:var(--gold); border-top:1px solid var(--line); padding-top:3mm; }
+  .closing{ background:linear-gradient(160deg,#e6dcc4 0%,#dccfb2 100%); display:flex; flex-direction:column; justify-content:center; }
+  .closing h2{ font-size:30px; margin-bottom:6mm; }
+  .closing p{ font-size:14.5px; color:#4a4236; line-height:1.8; max-width:140mm; margin-bottom:5mm; }
+  .sign{ font-size:20px; font-style:italic; color:var(--accent); margin-top:6mm; }
+</style>
+</head>
+<body>
+
+  <!-- COVER -->
+  <div class="page cover">
+    <div class="brand">Pure Living Zone</div>
+    <div class="crest">&#127807;</div>
+    <h1>The<br>Waste&#8209;Nothing<br><em>Guide</em></h1>
+    <div class="rule"></div>
+    <div class="sub">Twelve quiet skills your grandfather never thought twice about &mdash; turning what you throw away into food, medicine, and a little more freedom.</div>
+    <div class="by">Compiled by <b>The Sage</b> &nbsp;&middot;&nbsp; Pure Living Zone</div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="page">
+    <div class="kicker">Before You Begin</div>
+    <h2>The part they call garbage</h2>
+    <div class="intro" style="margin-top:6mm;">
+      <p>You throw the apple core in the bin. Your great&#8209;grandfather turned it into a year of vinegar.</p>
+      <p>He did not own more than you. He owned <b>less</b>. What he had was a pair of eyes that refused to see waste &mdash; only material waiting for its second use. A peel was a cleaner. A bone was a broth. A stub of celery was next year&rsquo;s harvest, already paid for.</p>
+      <div class="pull">&ldquo;A man who needs little is hard to sell to. A man who makes his own is hard to rule.&rdquo;</div>
+      <p>This guide is not about living poor. It is about being awake. Each skill below costs nothing but attention, and each one quietly widens the distance between you and the shelf you were told you could not live without.</p>
+      <p>Start with one. Master it. Then take the next.</p>
+    </div>
+    <div class="foot"><span>PURE LIVING ZONE</span><span>THE WASTE-NOTHING GUIDE</span></div>
+  </div>
+
+  <!-- KITCHEN -->
+  <div class="page">
+    <div class="kicker">Part One &middot; The Kitchen</div>
+    <h2>What never had to leave</h2>
+    <div class="lead">Most of a kitchen&rsquo;s &ldquo;trash&rdquo; is the most useful thing in the house. Five things to stop throwing today.</div>
+
+    <div class="item"><h3><span>01</span>Apple scraps &rarr; cider vinegar</h3>
+      <p>Save cores and peels in a jar. Cover with water, add a spoon of sugar, weight them under the surface with a smaller jar, cover with cloth. Stir daily for a week, then strain and leave four to six weeks. <b>You now own vinegar for cooking, cleaning, and washing hair</b> &mdash; from what you were about to bin.</p></div>
+
+    <div class="item"><h3><span>02</span>Vegetable ends &rarr; stock</h3>
+      <p>Keep a bag in the freezer: onion skins, carrot tops, celery bases, herb stems. When it is full, simmer two hours with water, salt, and pepper. <b>Strain for a gold broth</b> that no carton can match &mdash; and that cost you nothing extra.</p></div>
+
+    <div class="item"><h3><span>03</span>Citrus peels &rarr; all&#8209;purpose cleaner</h3>
+      <p>Pack orange or lemon peels into a jar, cover with plain white vinegar, seal two weeks. Strain into a spray bottle, cut half&#8209;and&#8209;half with water. <b>A degreaser for counters and glass</b> with no chemicals and a clean citrus scent.</p></div>
+
+    <div class="item"><h3><span>04</span>Stale bread &rarr; crumbs &amp; croutons</h3>
+      <p>Bread past its best is not finished. Cube and toast for croutons, or blitz and dry for breadcrumbs that keep for months in a jar. <b>Nothing molds in the bin that could have fed you twice.</b></p></div>
+
+    <div class="item"><h3><span>05</span>Bones &rarr; the long broth</h3>
+      <p>Roast bones, then simmer low for several hours with a splash of your homemade vinegar to draw out the minerals. <b>A nourishing stock</b> the old households never bought &mdash; because they never wasted what made it.</p></div>
+
+    <div class="foot"><span>PURE LIVING ZONE</span><span>THE WASTE-NOTHING GUIDE</span></div>
+  </div>
+
+  <!-- GARDEN & REGROW -->
+  <div class="page">
+    <div class="kicker">Part Two &middot; The Garden</div>
+    <h2>Scraps that grow back</h2>
+    <div class="lead">Some &ldquo;waste&rdquo; is simply a plant you have not finished using. Put it in water or soil and it pays you again.</div>
+
+    <div class="item"><h3><span>06</span>Spring onions &amp; leeks</h3>
+      <p>Keep the white root end, stand it in a glass with a little water on a sunny sill. <b>It regrows in days</b>, again and again. The most honest free food there is.</p></div>
+
+    <div class="item"><h3><span>07</span>Celery, lettuce &amp; cabbage hearts</h3>
+      <p>Set the base in a shallow dish of water. New leaves sprout from the centre within a week; move to soil to keep it going. <b>One head becomes many.</b></p></div>
+
+    <div class="item"><h3><span>08</span>Garlic, ginger &amp; potatoes</h3>
+      <p>A sprouting clove, a knob of ginger, an eyed potato &mdash; all are not spoiled, they are <b>seed</b>. Plant them and harvest a whole new crop from what most people throw out.</p></div>
+
+    <div class="item"><h3><span>09</span>Coffee grounds &amp; eggshells</h3>
+      <p>Grounds feed the soil with nitrogen; crushed eggshells add calcium and ward off slugs. <b>Your morning waste becomes next season&rsquo;s harvest.</b></p></div>
+
+    <div class="item"><h3><span>10</span>The simple scrap heap</h3>
+      <p>A corner pile of peels, leaves, and grounds turns itself into black, living earth. <b>The earth was the first recycler</b> &mdash; it asks only that you give back what you took.</p></div>
+
+    <div class="foot"><span>PURE LIVING ZONE</span><span>THE WASTE-NOTHING GUIDE</span></div>
+  </div>
+
+  <!-- HOME -->
+  <div class="page">
+    <div class="kicker">Part Three &middot; The Home</div>
+    <h2>Quiet thrift, old as the hills</h2>
+    <div class="lead">Two more habits that turn waste into use &mdash; and a word on why it matters.</div>
+
+    <div class="item"><h3><span>11</span>Worn cloth &rarr; rags &amp; patches</h3>
+      <p>A shirt past wearing is a drawer of cleaning rags, patches, and ties. <b>Cloth was never single&#8209;use</b> until someone profited from telling you it was.</p></div>
+
+    <div class="item"><h3><span>12</span>Fat &amp; ash &rarr; the old chores</h3>
+      <p>Saved cooking fat and clean wood ash were the makings of soap and scouring powder for centuries. Even kept simply, fat re&#8209;fries and ash scours pots. <b>Little left the old home unused.</b></p></div>
+
+    <div class="pull">&ldquo;They did not throw these things away because they were poor. They kept them because they were free.&rdquo;</div>
+
+    <p class="item" style="font-size:13px;color:var(--soft);line-height:1.7;">Pick one skill from this guide and do it this week. Not all twelve &mdash; one. Self&#8209;reliance is not built in a weekend; it is built one refused bin&#8209;trip at a time, until the day you notice how little you actually need to buy.</p>
+
+    <div class="foot"><span>PURE LIVING ZONE</span><span>THE WASTE-NOTHING GUIDE</span></div>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="page closing">
+    <div class="kicker" style="color:var(--accent);">A Word From The Sage</div>
+    <h2>The deed says the land is yours.</h2>
+    <p>So does the apple core. So does the peel, the bone, the worn cloth, the spent ground. The world will sell you a version of everything you already hold in your hand &mdash; if you let it convince you that what you have is garbage.</p>
+    <p>It never was. It was only waiting for a man with open eyes.</p>
+    <p>Keep your eyes open. Waste nothing. Need little. And watch how quietly free a person becomes.</p>
+    <div class="sign">&mdash; The Sage</div>
+    <div class="foot" style="border-top-color:#c9bb9c;"><span>PURE LIVING ZONE</span><span>pureliving-zone.com</span></div>
+  </div>
+
+</body>
+</html>

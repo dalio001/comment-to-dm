@@ -1,10 +1,12 @@
 """Facebook Pages / Messenger Graph API client.
 
 Uses only the official Graph API. The Facebook side has one big advantage over
-Instagram: `private_replies` lets you send a Messenger DM in direct response to a
+Instagram: a private reply lets you send a Messenger DM in direct response to a
 public comment, sidestepping the usual 24-hour messaging window and the
 "user must message you first" rule.
 """
+import json
+
 from graph import graph_request
 
 
@@ -19,9 +21,23 @@ def reply_to_comment(comment_id, message, access_token):
 def send_dm(comment_id, message, access_token):
     """Send a private Messenger reply to the author of a comment.
 
-    POST /{comment-id}/private_replies
+    Uses the Messenger Send API with a comment_id recipient:
+        POST /me/messages  { recipient: {comment_id}, message: {text} }
+
+    This is the supported path for comment-to-DM. The older
+    /{comment-id}/private_replies edge returns code 100 / subcode 33 on many
+    post types (reels, photos), so it is not used.
     """
-    return graph_request("POST", f"{comment_id}/private_replies", access_token, data={"message": message})
+    return graph_request(
+        "POST",
+        "me/messages",
+        access_token,
+        data={
+            "recipient": json.dumps({"comment_id": comment_id}),
+            "message": json.dumps({"text": message}),
+            "messaging_type": "RESPONSE",
+        },
+    )
 
 
 def get_post_details(post_id, access_token):

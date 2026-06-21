@@ -42,6 +42,29 @@ def send_text_dm(recipient_id, message, ig_business_account_id, access_token):
     return graph_request("POST", f"{ig_business_account_id}/messages", access_token, data=payload)
 
 
+def list_recent_media(ig_business_account_id, access_token, limit=15):
+    """List recent media so the auto-arm job can match a just-published reel.
+
+    GET /{ig-business-account-id}/media?fields=id,caption,media_type,timestamp
+    """
+    body = graph_request(
+        "GET",
+        f"{ig_business_account_id}/media",
+        access_token,
+        params={"fields": "id,caption,media_type,timestamp", "limit": limit},
+    )
+    items = body.get("data", []) if isinstance(body, dict) else []
+    return [
+        {
+            "id": m.get("id"),
+            "caption": m.get("caption", "") or "",
+            "media_type": m.get("media_type", ""),
+            "timestamp": m.get("timestamp", ""),
+        }
+        for m in items
+    ]
+
+
 def get_post_details(post_id, access_token):
     """Fetch media thumbnail + caption for dashboard preview.
 

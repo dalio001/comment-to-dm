@@ -60,6 +60,29 @@ def send_text_dm(recipient_id, message, access_token):
     )
 
 
+def list_recent_media(page_id, access_token, limit=15):
+    """List recent Page posts so the auto-arm job can match a just-published reel.
+
+    GET /{page-id}/posts?fields=id,message,created_time
+    """
+    body = graph_request(
+        "GET",
+        f"{page_id}/posts",
+        access_token,
+        params={"fields": "id,message,created_time", "limit": limit},
+    )
+    items = body.get("data", []) if isinstance(body, dict) else []
+    return [
+        {
+            "id": m.get("id"),
+            "caption": m.get("message", "") or "",
+            "media_type": "",
+            "timestamp": m.get("created_time", ""),
+        }
+        for m in items
+    ]
+
+
 def get_post_details(post_id, access_token):
     """Fetch post image + message for dashboard preview.
 

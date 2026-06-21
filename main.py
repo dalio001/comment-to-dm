@@ -8,6 +8,7 @@ from fastapi.staticfiles import StaticFiles
 
 from database import init_db
 from routes import api, dashboard, webhook
+from scheduler import start_scheduler
 
 load_dotenv()
 logging.basicConfig(
@@ -23,6 +24,11 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 app.include_router(webhook.router)
 app.include_router(api.router)
 app.include_router(dashboard.router)
+
+
+@app.on_event("startup")
+def _startup():
+    start_scheduler()
 
 
 @app.get("/health")

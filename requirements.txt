@@ -9,3 +9,5 @@ requests>=2.32
 python-multipart>=0.0.20
 pydantic>=2.11
 psycopg2-binary>=2.9  # PostgreSQL driver (production persistence)
+apscheduler>=3.10     # in-app daily auto-arm scheduler
+tzdata>=2024.1        # IANA timezone data (Docker slim images lack system tz)

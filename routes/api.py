@@ -1,7 +1,10 @@
 """REST API for the dashboard: config, campaigns, and live post preview."""
+import json
 import logging
+import os
+import re
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Body, Depends, HTTPException
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
@@ -12,6 +15,9 @@ from models import PLATFORMS, Campaign, Config
 
 logger = logging.getLogger("api")
 router = APIRouter(prefix="/api")
+
+# Auto-arm pulls its campaign templates from this file (one per reel/keyword).
+QUEUE_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "campaign_queue.json")
 
 
 # --------------------------------------------------------------------------- #
@@ -151,6 +157,105 @@ def delete_campaign(campaign_id: int, db: Session = Depends(get_db)):
     db.delete(campaign)
     db.commit()
     return {"status": "deleted"}
+
+
+# --------------------------------------------------------------------------- #
+# Auto-arm: turn a just-published reel into an active campaign
+# --------------------------------------------------------------------------- #
+class AutoArmIn(BaseModel):
+    # Optional inline queue; when omitted, campaign_queue.json is used.
+    queue: list[dict] | None = None
+    limit: int = 15
+
+
+def _load_queue():
+    if not os.path.exists(QUEUE_PATH):
+        return []
+    with open(QUEUE_PATH, encoding="utf-8") as fh:
+        return json.load(fh)
+
+
+def _keyword_in_caption(keyword: str, caption: str) -> bool:
+    if not keyword or not caption:
+        return False
+    return re.search(rf"\b{re.escape(keyword)}\b", caption, re.IGNORECASE) is not None
+
+
+def run_auto_arm(db: Session, queue=None, limit: int = 15):
+    """Core auto-arm logic, callable from the HTTP endpoint or the in-app scheduler.
+
+    Matches each queued keyword to a recently-published post and activates its campaign.
+    Idempotent: a post that already has a campaign is skipped, so re-runs are safe.
+    """
+    cfg = _get_or_create_config(db)
+    if queue is None:
+        queue = _load_queue()
+    if not queue:
+        return {"armed": [], "skipped": [], "note": "campaign queue is empty"}
+
+    media_cache: dict[str, list] = {}
+
+    def media_for(platform: str):
+        if platform in media_cache:
+            return media_cache[platform]
+        if platform == "facebook":
+            if not (cfg.facebook_page_id and cfg.facebook_page_access_token):
+                raise HTTPException(status_code=400, detail="Facebook not configured in Settings")
+            items = facebook.list_recent_media(cfg.facebook_page_id, cfg.facebook_page_access_token, limit)
+        else:
+            if not (cfg.instagram_business_account_id and cfg.instagram_access_token):
+                raise HTTPException(status_code=400, detail="Instagram not configured in Settings")
+            items = instagram.list_recent_media(cfg.instagram_business_account_id, cfg.instagram_access_token, limit)
+        media_cache[platform] = items
+        return items
+
+    armed, skipped = [], []
+    for tpl in queue:
+        keyword = (tpl.get("keyword") or "").strip()
+        platform = tpl.get("platform", "instagram")
+        label = tpl.get("name") or keyword
+        if platform not in PLATFORMS:
+            skipped.append({"name": label, "reason": f"platform must be one of {PLATFORMS}"})
+            continue
+        if not keyword:
+            skipped.append({"name": label, "reason": "template has no keyword"})
+            continue
+        try:
+            items = media_for(platform)
+        except HTTPException as exc:
+            skipped.append({"name": label, "reason": exc.detail})
+            continue
+        # Newest matching post wins (Meta returns recent-first).
+        match = next((m for m in items if _keyword_in_caption(keyword, m["caption"])), None)
+        if not match:
+            skipped.append({"name": label, "keyword": keyword, "reason": "no published post carries this keyword yet"})
+            continue
+        if db.query(Campaign).filter(Campaign.post_id == match["id"]).first():
+            skipped.append({"name": label, "keyword": keyword, "post_id": match["id"], "reason": "already armed"})
+            continue
+        campaign = Campaign(
+            platform=platform,
+            name=label,
+            post_id=match["id"],
+            keywords=keyword,
+            comment_reply=tpl.get("comment_reply", ""),
+            dm_message=tpl.get("dm_message", ""),
+            followup_message=tpl.get("followup_message", ""),
+            active=True,
+        )
+        db.add(campaign)
+        db.commit()
+        db.refresh(campaign)
+        logger.info("Auto-armed campaign %s (%s) on post %s", campaign.id, keyword, match["id"])
+        armed.append({"name": label, "keyword": keyword, "post_id": match["id"], "campaign_id": campaign.id})
+
+    return {"armed": armed, "skipped": skipped}
+
+
+@router.post("/campaigns/auto-arm")
+def auto_arm(data: AutoArmIn = Body(default=AutoArmIn()), db: Session = Depends(get_db)):
+    """HTTP entry point for auto-arm (cron / Render Cron Job / manual trigger)."""
+    return run_auto_arm(db, queue=data.queue, limit=data.limit)
 
 
 # --------------------------------------------------------------------------- #

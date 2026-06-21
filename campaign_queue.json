@@ -1,0 +1,58 @@
+[
+  {
+    "platform": "facebook",
+    "name": "Day 1 - The Fridge Map",
+    "keyword": "SHELF",
+    "comment_reply": "Sent you The Fridge Map 🐗 Check your DMs.",
+    "dm_message": "You asked for The Fridge Map — every food and where it really belongs. Reply YES and I'll send it straight over.",
+    "followup_message": "Here it is, friend — The Fridge Map: https://comment-to-dm.onrender.com/static/leads/day-1-the-cold-kills-first.pdf — The Sage."
+  },
+  {
+    "platform": "facebook",
+    "name": "Day 2 - The Honey Guide",
+    "keyword": "AMBER",
+    "comment_reply": "Sent you The Honey Guide 🐗 Check your DMs.",
+    "dm_message": "You asked for The Honey Guide — how to tell real raw honey from the fake. Reply YES and I'll send it over.",
+    "followup_message": "Here it is — The Honey Guide: https://comment-to-dm.onrender.com/static/leads/day-2-honey-never-dies.pdf — The Sage."
+  },
+  {
+    "platform": "facebook",
+    "name": "Day 3 - The Salt Cure",
+    "keyword": "CURE",
+    "comment_reply": "Sent you The Salt Cure 🐗 Check your DMs.",
+    "dm_message": "You asked for The Salt Cure — keeping food through any winter. Reply YES and it's yours.",
+    "followup_message": "Here it is — The Salt Cure: https://comment-to-dm.onrender.com/static/leads/day-3-salt-kept-winter.pdf — The Sage."
+  },
+  {
+    "platform": "facebook",
+    "name": "Day 4 - The Cast Iron Guide",
+    "keyword": "IRON",
+    "comment_reply": "Sent you The Cast Iron Guide 🐗 Check your DMs.",
+    "dm_message": "You asked for The Cast Iron Guide — restore a rusted pan into a lifetime tool. Reply YES and I'll send it.",
+    "followup_message": "Here it is — The Cast Iron Guide: https://comment-to-dm.onrender.com/static/leads/day-4-bring-the-iron-back.pdf — The Sage."
+  },
+  {
+    "platform": "facebook",
+    "name": "Day 5 - The Blackout Plan",
+    "keyword": "BLACKOUT",
+    "comment_reply": "Sent you The Blackout Plan 🐗 Check your DMs.",
+    "dm_message": "You asked for The Blackout Plan — your calm first ten minutes in the dark. Reply YES and it's yours.",
+    "followup_message": "Here it is — The Blackout Plan: https://comment-to-dm.onrender.com/static/leads/day-5-first-ten-minutes.pdf — The Sage."
+  },
+  {
+    "platform": "facebook",
+    "name": "Day 6 - The One-Box Guide",
+    "keyword": "SCRUB",
+    "comment_reply": "Sent you The One-Box Guide 🐗 Check your DMs.",
+    "dm_message": "You asked for The One-Box Guide — one cheap box of baking soda, the whole house. Reply YES and I'll send it.",
+    "followup_message": "Here it is — The One-Box Guide: https://comment-to-dm.onrender.com/static/leads/day-6-one-box-does-it-all.pdf — The Sage."
+  },
+  {
+    "platform": "facebook",
+    "name": "Day 7 - The Seven",
+    "keyword": "HANDS",
+    "comment_reply": "Sent you The Seven 🐗 Check your DMs.",
+    "dm_message": "You asked for The Seven — seven things you overpay for, made at home for pennies. Reply YES and it's yours.",
+    "followup_message": "Here it is — The Seven: https://comment-to-dm.onrender.com/static/leads/day-7-seven-you-overpay-for.pdf — The Sage."
+  }
+]

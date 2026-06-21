@@ -3,6 +3,7 @@ import json
 import logging
 import os
 import re
+from datetime import datetime, timezone
 
 from fastapi import APIRouter, Body, Depends, HTTPException
 from pydantic import BaseModel
@@ -166,6 +167,12 @@ class AutoArmIn(BaseModel):
     # Optional inline queue; when omitted, campaign_queue.json is used.
     queue: list[dict] | None = None
     limit: int = 15
+    # Only consider posts published within this many hours (the reel is minutes
+    # old when the nightly job runs). None -> default DEFAULT_MAX_AGE_HOURS.
+    max_age_hours: float | None = None
+
+
+DEFAULT_MAX_AGE_HOURS = 12.0
 
 
 def _load_queue():
@@ -176,16 +183,48 @@ def _load_queue():
 
 
 def _keyword_in_caption(keyword: str, caption: str) -> bool:
+    """Case-SENSITIVE whole-word match.
+
+    The brand always writes the CTA word in caps ("Comment SHELF", "Leave the
+    word FLOCK"), while body prose uses lowercase ("runs through your own two
+    hands"). Matching case-sensitively means the keyword only fires on the
+    intended uppercase call-to-action, never on an incidental lowercase word.
+    """
     if not keyword or not caption:
         return False
-    return re.search(rf"\b{re.escape(keyword)}\b", caption, re.IGNORECASE) is not None
+    return re.search(rf"\b{re.escape(keyword)}\b", caption) is not None
 
 
-def run_auto_arm(db: Session, queue=None, limit: int = 15):
+def _too_old(timestamp: str, max_age_hours: float) -> bool:
+    """True if a post is older than the window. The just-published reel is only
+    minutes old when the nightly job runs, so anything older isn't our target —
+    this stops a stale post that happens to contain the word from matching."""
+    if not timestamp or not max_age_hours:
+        return False
+    dt = None
+    for fmt in ("%Y-%m-%dT%H:%M:%S%z", "%Y-%m-%dT%H:%M:%S.%f%z"):
+        try:
+            dt = datetime.strptime(timestamp, fmt)
+            break
+        except ValueError:
+            continue
+    if dt is None:
+        try:
+            dt = datetime.fromisoformat(timestamp)
+        except ValueError:
+            return False  # unparseable -> don't exclude on age
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    age_hours = (datetime.now(timezone.utc) - dt).total_seconds() / 3600.0
+    return age_hours > max_age_hours
+
+
+def run_auto_arm(db: Session, queue=None, limit: int = 15, max_age_hours: float = DEFAULT_MAX_AGE_HOURS):
     """Core auto-arm logic, callable from the HTTP endpoint or the in-app scheduler.
 
     Matches each queued keyword to a recently-published post and activates its campaign.
     Idempotent: a post that already has a campaign is skipped, so re-runs are safe.
+    Only matches the uppercase CTA word on a post published within max_age_hours.
     """
     cfg = _get_or_create_config(db)
     if queue is None:
@@ -225,10 +264,15 @@ def run_auto_arm(db: Session, queue=None, limit: int = 15):
         except HTTPException as exc:
             skipped.append({"name": label, "reason": exc.detail})
             continue
-        # Newest matching post wins (Meta returns recent-first).
-        match = next((m for m in items if _keyword_in_caption(keyword, m["caption"])), None)
+        # Newest matching post wins (Meta returns recent-first): the uppercase
+        # CTA word must appear in a post published within the recency window.
+        match = next(
+            (m for m in items
+             if _keyword_in_caption(keyword, m["caption"]) and not _too_old(m.get("timestamp"), max_age_hours)),
+            None,
+        )
         if not match:
-            skipped.append({"name": label, "keyword": keyword, "reason": "no published post carries this keyword yet"})
+            skipped.append({"name": label, "keyword": keyword, "reason": "no recent published post carries this CTA word yet"})
             continue
         if db.query(Campaign).filter(Campaign.post_id == match["id"]).first():
             skipped.append({"name": label, "keyword": keyword, "post_id": match["id"], "reason": "already armed"})
@@ -255,7 +299,8 @@ def run_auto_arm(db: Session, queue=None, limit: int = 15):
 @router.post("/campaigns/auto-arm")
 def auto_arm(data: AutoArmIn = Body(default=AutoArmIn()), db: Session = Depends(get_db)):
     """HTTP entry point for auto-arm (cron / Render Cron Job / manual trigger)."""
-    return run_auto_arm(db, queue=data.queue, limit=data.limit)
+    max_age = data.max_age_hours if data.max_age_hours is not None else DEFAULT_MAX_AGE_HOURS
+    return run_auto_arm(db, queue=data.queue, limit=data.limit, max_age_hours=max_age)
 
 
 # --------------------------------------------------------------------------- #

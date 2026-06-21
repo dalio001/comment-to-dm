@@ -9,7 +9,15 @@ services:
         sync: false
       - key: FACEBOOK_APP_SECRET
         sync: false
+      # DATABASE_URL is wired automatically to the managed Postgres below, so
+      # config + campaigns survive redeploys (free SQLite on Render is ephemeral).
       - key: DATABASE_URL
-        value: sqlite:///./app.db
+        fromDatabase:
+          name: comment-to-dm-db
+          property: connectionString
       - key: LOG_LEVEL
         value: INFO
+
+databases:
+  - name: comment-to-dm-db
+    plan: free

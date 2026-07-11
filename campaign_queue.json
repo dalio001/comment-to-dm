@@ -54,5 +54,13 @@
     "comment_reply": "Sent you The Water Safety Card 🐗 Check your DMs.",
     "dm_message": "You asked for The Water Safety Card — the exact amounts and times for every purification method. Reply YES and it's yours.",
     "followup_message": "Here it is — The Water Safety Card: https://comment-to-dm.onrender.com/static/leads/water-safety-card.pdf — The Sage."
+  },
+  {
+    "platform": "facebook",
+    "name": "Gut in a Crock - The Ferment Guide",
+    "keyword": "CROCK",
+    "comment_reply": "Sent you The Ferment Guide 🐗 Check your DMs.",
+    "dm_message": "You asked for The Ferment Guide — the salt ratio, the timing, and how to keep it safe. Reply YES and I'll send it over.",
+    "followup_message": "Here it is — The Ferment Guide: https://comment-to-dm.onrender.com/static/leads/ferment-guide.pdf — The Sage."
   }
 ]

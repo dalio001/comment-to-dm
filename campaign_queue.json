@@ -1,7 +1,8 @@
 [
   {
+    "_comment": "=== WEEK 79 (Jun 25 batch) — keep active, old posts still live ===",
     "platform": "facebook",
-    "name": "Day 1 - The Fire Kit",
+    "name": "W79 Day 1 - The Fire Kit",
     "keyword": "FIRE",
     "comment_reply": "Sent you The Fire Kit 🐗 Check your DMs.",
     "dm_message": "You asked for The Fire Kit — what to pack so you can make warmth from nothing. Reply YES and I'll send it straight over.",
@@ -9,7 +10,7 @@
   },
   {
     "platform": "facebook",
-    "name": "Day 2 - The Freshness Guide",
+    "name": "W79 Day 2 - The Freshness Guide",
     "keyword": "EGGS",
     "comment_reply": "Sent you The Freshness Guide 🐗 Check your DMs.",
     "dm_message": "You asked for The Freshness Guide — four tests your grandmother never had to be taught. Reply YES and I'll send it over.",
@@ -17,7 +18,7 @@
   },
   {
     "platform": "facebook",
-    "name": "Day 3 - The Seed Vault Guide",
+    "name": "W79 Day 3 - The Seed Vault Guide",
     "keyword": "SEEDS",
     "comment_reply": "Sent you The Seed Vault Guide 🐗 Check your DMs.",
     "dm_message": "You asked for The Seed Vault Guide — every step to save, dry, and store seeds from the vegetables you already grow. Reply YES and it's yours.",
@@ -25,7 +26,7 @@
   },
   {
     "platform": "facebook",
-    "name": "Day 4 - The Oil Lamp Guide",
+    "name": "W79 Day 4 - The Oil Lamp Guide",
     "keyword": "LAMP",
     "comment_reply": "Sent you The Oil Lamp Guide 🐗 Check your DMs.",
     "dm_message": "You asked for The Oil Lamp Guide — five ways to make light from what's already in your kitchen. Reply YES and I'll send it.",
@@ -33,7 +34,7 @@
   },
   {
     "platform": "facebook",
-    "name": "Day 5 - The Kitchen Healer",
+    "name": "W79 Day 5 - The Kitchen Healer",
     "keyword": "GINGER",
     "comment_reply": "Sent you The Kitchen Healer 🐗 Check your DMs.",
     "dm_message": "You asked for The Kitchen Healer — exactly how to prepare each plant, and when to reach for it. Reply YES and it's yours.",
@@ -41,7 +42,7 @@
   },
   {
     "platform": "facebook",
-    "name": "Day 6 - The Mending Map",
+    "name": "W79 Day 6 - The Mending Map",
     "keyword": "MEND",
     "comment_reply": "Sent you The Mending Map 🐗 Check your DMs.",
     "dm_message": "You asked for The Mending Map — the five hand stitches that fix anything, every step drawn out. Reply YES and I'll send it.",
@@ -49,7 +50,7 @@
   },
   {
     "platform": "facebook",
-    "name": "Day 7 - The Water Safety Card",
+    "name": "W79 Day 7 - The Water Safety Card",
     "keyword": "WATER",
     "comment_reply": "Sent you The Water Safety Card 🐗 Check your DMs.",
     "dm_message": "You asked for The Water Safety Card — the exact amounts and times for every purification method. Reply YES and it's yours.",
@@ -62,5 +63,112 @@
     "comment_reply": "Sent you The Ferment Guide 🐗 Check your DMs.",
     "dm_message": "You asked for The Ferment Guide — the salt ratio, the timing, and how to keep it safe. Reply YES and I'll send it over.",
     "followup_message": "Here it is — The Ferment Guide: https://comment-to-dm.onrender.com/static/leads/ferment-guide.pdf — The Sage."
+  },
+
+  {
+    "_comment": "=== WEEK 80 (Jul 14 batch) — MAIN REELS: keyword -> DM with PDF ===",
+    "platform": "facebook",
+    "name": "W80 Day 1 - The Seed Sovereignty Guide",
+    "keyword": "SEEDS",
+    "comment_reply": "Sent you The Seed Sovereignty Guide 🌱 Check your DMs.",
+    "dm_message": "You asked for The Seed Sovereignty Guide — what they patented, what remains free, and how to build a seed library no corporation can touch. Reply YES and it's yours.",
+    "followup_message": "Here it is — The Seed Sovereignty Guide: https://comment-to-dm.onrender.com/static/leads/seeds-guide.pdf — The Sage."
+  },
+  {
+    "platform": "facebook",
+    "name": "W80 Day 2 - The Ash Map",
+    "keyword": "ASHES",
+    "comment_reply": "Sent you The Ash Map 🪵 Check your DMs.",
+    "dm_message": "You asked for The Ash Map — seven uses for hardwood ash your grandmother knew and the modern world forgot. Reply YES and it's yours.",
+    "followup_message": "Here it is — The Ash Map: https://comment-to-dm.onrender.com/static/leads/ashes-guide.pdf — The Sage."
+  },
+  {
+    "platform": "facebook",
+    "name": "W80 Day 3 - The Fire Guide",
+    "keyword": "FIRE",
+    "comment_reply": "Sent you The Fire Guide 🔥 Check your DMs.",
+    "dm_message": "You asked for The Fire Guide — the complete bow drill method, from wood selection to glowing coal. Reply YES and I'll send it.",
+    "followup_message": "Here it is — The Fire Guide: https://comment-to-dm.onrender.com/static/leads/fire-guide.pdf — The Sage."
+  },
+  {
+    "platform": "facebook",
+    "name": "W80 Day 5 - The Nixtamal Guide",
+    "keyword": "CORN",
+    "comment_reply": "Sent you The Nixtamal Guide 🌽 Check your DMs.",
+    "dm_message": "You asked for The Nixtamal Guide — the ancestral step that made corn a complete food. Reply YES and it's yours.",
+    "followup_message": "Here it is — The Nixtamal Guide: https://comment-to-dm.onrender.com/static/leads/corn-guide.pdf — The Sage."
+  },
+  {
+    "platform": "facebook",
+    "name": "W80 Day 7 - The Whey Guide",
+    "keyword": "WHEY",
+    "comment_reply": "Sent you The Whey Guide 🥛 Check your DMs.",
+    "dm_message": "You asked for The Whey Guide — seven things your grandmother did with whey that you pour down the drain every morning. Reply YES and it's yours.",
+    "followup_message": "Here it is — The Whey Guide: https://comment-to-dm.onrender.com/static/leads/whey-guide.pdf — The Sage."
+  },
+
+  {
+    "_comment": "=== WEEK 80 — SPOT-THE-DIFF: keyword SPOT -> public comment reply with 7 differences. TYPE=spot_reply. ILYES: implement post_id matching so each post gets its own differences list. ===",
+    "_type": "spot_reply",
+    "_note": "REQUIRES BOT UPDATE: match by keyword=SPOT AND post_id from webhook. Then send the differences for that specific post as a public comment reply (not DM).",
+    "platform": "facebook",
+    "name": "W80 Spot-the-Diff Day 1 - Seeds",
+    "keyword": "SPOT",
+    "spot_posts": [
+      {
+        "day": 1,
+        "theme": "seed-they-patented",
+        "comment_reply": "Here are the 7 differences in today's image 👇\n1. The Sage's open hand of seeds → sealed foil seed packet (the lesson)\n2. Clay seed jars → sealed plastic containers\n3. Paper envelopes → printed barcode labels\n4. Dried sunflower head facing right → facing left\n5. Notebook open → closed\n6. One cluster of hanging bean pods missing\n7. Wooden scale tray slightly tilted\nHow many did you find? 👀"
+      },
+      {
+        "day": 2,
+        "theme": "ash-she-never-bought",
+        "comment_reply": "Here are the 7 differences in today's image 👇\n1. Clay drip vessel → plastic soap bottle shape (the lesson)\n2. Handmade soap bar gone from the shelf\n3. Wood ash pile slightly smaller\n4. Cloth filter: cream → grey\n5. Hearth: fire in TOP, dark coals only in BOTTOM\n6. One shelf jar lid open → closed\n7. The Sage's right hand slightly lower\nHow many did you find? 👀"
+      },
+      {
+        "day": 3,
+        "theme": "fire-in-ninety-seconds",
+        "comment_reply": "Here are the 7 differences in today's image 👇\n1. Glowing coal in the notch → empty notch (the lesson)\n2. Tinder nest moved slightly to the right\n3. Kindling pile has one fewer stick\n4. One tree trunk visible in TOP, gone in BOTTOM\n5. The Sage's left foot position slightly different\n6. Bow string taut → slightly loose\n7. Warm amber light → slightly cooler light\nHow many did you find? 👀"
+      },
+      {
+        "day": 4,
+        "theme": "feeding-them-was-a-crime",
+        "comment_reply": "Here are the 7 differences in today's image 👇\n1. Bread in hands → government permit form (the lesson)\n2. Bowl of soup → empty bowl\n3. Occupied bench → empty bench in background\n4. Warm gold morning light → cooler grey light\n5. Bird on the archway in TOP, gone in BOTTOM\n6. Table cloth present → missing\n7. The Sage's expression: open → restrained\nHow many did you find? 👀"
+      },
+      {
+        "day": 5,
+        "theme": "the-step-they-removed",
+        "comment_reply": "Here are the 7 differences in today's image 👇\n1. Pile of wood ash beside the pot → absent (the lesson)\n2. Clay water pitcher → modern jug shape\n3. Four hanging dried corn ears → three\n4. Stone grinder lit on one side → shadowed\n5. Hearth fire active → embers only\n6. The Sage's left hand on pot → at his side\n7. One shelf bracket visible in TOP, gone in BOTTOM\nHow many did you find? 👀"
+      },
+      {
+        "day": 6,
+        "theme": "your-panels-their-grid",
+        "comment_reply": "Here are the 7 differences in today's image 👇\n1. Padlock on meter in TOP → padlock absent in BOTTOM (the lesson)\n2. Power cable connected → disconnected and coiled\n3. Flowering plant in bloom → removed\n4. Window: warm light inside → dark\n5. Sky: clear blue → slight haze\n6. The Sage's hand pointing at meter → at his side\n7. One solar panel angle slightly different\nHow many did you find? 👀"
+      },
+      {
+        "day": 7,
+        "theme": "whey-she-kept",
+        "comment_reply": "Here are the 7 differences in today's image 👇\n1. Whey pouring into clay bowl → pouring into sink drain (the lesson)\n2. Fermentation crock lid open → closed and pushed back\n3. Bread dough bowl present → absent\n4. Three bunches of hanging herbs → two\n5. The Sage's expression: engaged → neutral\n6. Counter surface: grain scattered → clean\n7. Morning golden light → cooler midday light\nHow many did you find? 👀"
+      }
+    ]
+  },
+
+  {
+    "_comment": "=== WEEK 80 — TRIVIA: any comment -> public reply teasing tonight's reel. TYPE=any_comment_reply. ILYES: implement so this fires ONLY on trivia posts (match by post_id or post type tag). ===",
+    "_type": "any_comment_reply",
+    "_note": "REQUIRES BOT UPDATE: fire on ANY comment (no keyword) but only on trivia posts. Public reply only, no DM.",
+    "platform": "facebook",
+    "name": "W80 Trivia - Any Comment Reply",
+    "keyword": "*",
+    "comment_reply": "The answer drops in tonight's reel at midnight — stay tuned! Drop your guess below and see if you're right 👇🔥",
+    "trivia_post_themes": [
+      "trivia-day-1-seeds",
+      "trivia-day-2-ashes",
+      "trivia-day-3-fire",
+      "trivia-day-4-feed",
+      "trivia-day-5-corn",
+      "trivia-day-6-grid",
+      "trivia-day-7-whey"
+    ]
   }
 ]
